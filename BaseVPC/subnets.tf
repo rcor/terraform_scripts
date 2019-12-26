@@ -1,55 +1,69 @@
 // Public Subnet
-resource "aws_subnet" "publicA" {
+resource "aws_subnet" "public_a" {
   vpc_id     = "${aws_vpc.main.id}"
   cidr_block = "${var.cidr_subnets[0]}"
   availability_zone = "${var.region_az[0]}"
   map_public_ip_on_launch = "${var.public_subnet_map_public_ip_on_launch}"
-  tags = {
+  tags = merge({
     Name = "${var.name}-public-${var.region_az[0]}"
-    Created = "terraform"
-    Author = var.author
     Type = "public"
-    Date = timestamp()
-  }
+    },var.tags)
 }
 
-resource "aws_subnet" "publicB" {
+resource "aws_subnet" "public_b" {
   vpc_id     = "${aws_vpc.main.id}"
   cidr_block = "${var.cidr_subnets[1]}"
   availability_zone = "${var.region_az[1]}"
   map_public_ip_on_launch = "${var.public_subnet_map_public_ip_on_launch}"
-  tags = {
+  tags = merge({
     Name = "${var.name}-public-${var.region_az[1]}"
-    Created = "terraform"
-    Author = var.author
     Type = "public"
-    Date = timestamp()
-  }
+  },var.tags)
+}
+
+// Public Subnet Optional
+
+resource "aws_subnet" "public_c" {
+  vpc_id     = "${aws_vpc.main.id}"
+  cidr_block = "${var.cidr_subnets[2]}"
+  availability_zone = "${var.region_az[2]}"
+  tags = merge({
+    Name = "${var.name}-public-${var.region_az[2]}"
+    Type = "public"
+  },var.tags)
+  count = "${!var.has_private_subnet ? 1 : 0}"
+}
+
+resource "aws_subnet" "public_d" {
+  vpc_id     = "${aws_vpc.main.id}"
+  cidr_block = "${var.cidr_subnets[3]}"
+  availability_zone = "${var.region_az[3]}"
+  tags = merge({
+    Name = "${var.name}-public-${var.region_az[3]}"
+    type = "public"
+  },var.tags)
+  count = "${!var.has_private_subnet ? 1 : 0}"
 }
 
 // Private Subnet
-resource "aws_subnet" "privateA" {
+resource "aws_subnet" "private_a" {
   vpc_id     = "${aws_vpc.main.id}"
   cidr_block = "${var.cidr_subnets[2]}"
   availability_zone = "${var.region_az[0]}"
-  tags = {
+  tags = merge({
     Name = "${var.name}-private-${var.region_az[0]}"
-    Created = "terraform"
-    Author = var.author
     Type = "private"
-    Date = timestamp()
-  }
+  },var.tags)
+  count = "${var.has_private_subnet ? 1 : 0}"
 }
 
-resource "aws_subnet" "privateB" {
+resource "aws_subnet" "private_b" {
   vpc_id     = "${aws_vpc.main.id}"
   cidr_block = "${var.cidr_subnets[3]}"
   availability_zone = "${var.region_az[1]}"
-  tags = {
+  tags = merge({
     Name = "${var.name}-private-${var.region_az[1]}"
-    Created = "terraform"
-    author = var.author
     type = "private"
-    date = timestamp()
-  }
+  },var.tags)
+  count = "${var.has_private_subnet ? 1 : 0}"
 }

@@ -4,10 +4,15 @@ resource "aws_vpc" "main" {
   assign_generated_ipv6_cidr_block = var.assign_generated_ipv6
   enable_dns_support = "${ var.enable_dns_support}"
   enable_dns_hostnames  = "${ var.enable_dns_hostnames}"
-  tags = {
+  tags = merge({
     Name = "${var.name}"
-    Created = "terraform"
-    Author = var.author
-    Date = timestamp()
-  }
+    },var.tags)
+}
+
+
+resource "aws_internet_gateway" "main" {
+  vpc_id = "${aws_vpc.main.id}"
+  tags = merge({
+    Name = "${var.name}_internet_gateway"
+    },var.tags)
 }

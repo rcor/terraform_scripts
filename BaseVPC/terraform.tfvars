@@ -1,12 +1,14 @@
 # General
 name =  "terraform"
 region = "us-east-1"
-author = "rodolfo"
+// has_private_subnet = false
+has_egress-only-internet-gateway = true
 
 // VPC
 cidr_block = "172.16.0.0/16"
+assign_generated_ipv6= true
 
 // Subnet
 cidr_subnets  = ["172.16.0.0/18", "172.16.64.0/18", "172.16.128.0/18", "172.16.192.0/18"]
-region_az = ["us-east-1a","us-east-1b"]
+region_az = ["us-east-1a","us-east-1b","us-east-1c","us-east-1d"]
 public_subnet_map_public_ip_on_launch = true
