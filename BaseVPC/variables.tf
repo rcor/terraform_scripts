@@ -2,7 +2,7 @@
 variable has_private_subnet {default = true}
 variable has_nat_gateway {default = false}
 variable has_nat_instance {default = false}
-variable has_egress-only-internet-gateway {default = false}
+variable has_egress_only_internet_gateway {default = false}
 
 // tags
 variable name {}
