@@ -1,6 +1,6 @@
 // Only with has_nat_gateway = true
 // Elastic IPs
-resource "aws_eip" "nat_elastic_ip" {
+resource "aws_eip" "nat_ig_elastic_ip" {
   vpc      = true
   count = "${var.has_nat_gateway?2:0}"
   tags = merge ({
@@ -10,7 +10,7 @@ resource "aws_eip" "nat_elastic_ip" {
 
 // Nat Gateways
 resource "aws_nat_gateway" "nat_gateway_public_a" {
-  allocation_id = "${aws_eip.nat_elastic_ip[0].id}"
+  allocation_id = "${aws_eip.nat_ig_elastic_ip[0].id}"
   subnet_id = "${aws_subnet.public_a.id}"
   count = "${var.has_nat_gateway?1:0}"
   tags = merge ({
@@ -19,7 +19,7 @@ resource "aws_nat_gateway" "nat_gateway_public_a" {
 }
 
 resource "aws_nat_gateway" "nat_gateway_public_b" {
-  allocation_id = "${aws_eip.nat_elastic_ip[1].id}"
+  allocation_id = "${aws_eip.nat_ig_elastic_ip[1].id}"
   subnet_id = "${aws_subnet.public_b.id}"
   count = "${var.has_nat_gateway?1:0}"
   tags = merge ({

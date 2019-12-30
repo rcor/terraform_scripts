@@ -12,6 +12,10 @@ resource "aws_default_security_group" "default" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+  tags = merge ({
+    Name = "${var.name}_default"
+    type = "private"
+  },var.tags)
 }
 
 
@@ -33,4 +37,9 @@ resource "aws_security_group" "allow_tls" {
     protocol        = "-1"
     cidr_blocks     = ["0.0.0.0/0"]
   }
+
+  tags = merge ({
+    Name = "${var.name}_allow_tls"
+    type = "private"
+  },var.tags)
 }
