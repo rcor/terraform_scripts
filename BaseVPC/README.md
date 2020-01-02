@@ -46,7 +46,7 @@ has_private_subnet = true
 ## NAT GATEWAY
 Las variable **has_nat_gateway** tiene que setearse en **true** las variables **has_egress_only_internet_gateway** y  **has_nat_instance** por defecto su valor es **false**
 
-![Diagram](./assets/InternetGateway.svg) 
+![Diagram](./../assets/InternetGateway.svg) 
 ```
 has_egress_only_internet_gateway = false
 has_nat_instance = false
@@ -57,7 +57,7 @@ has_nat_gateway = true
 
 Las variable **has_nat_instance** tiene que setearse en **true** las variables **has_egress_only_internet_gateway** y  **has_nat_gateway** por defecto su valor es **false**
 
-![Diagram](./assets/NatInstance.svg) 
+![Diagram](./../assets/NatInstance.svg) 
 
 ```
 has_egress_only_internet_gateway = false
@@ -68,7 +68,7 @@ has_nat_gateway = false
 
 Las variable **has_egress_only_internet_gateway** tiene que setearse en **true** las variables **has_nat_instance** y  **has_nat_gateway** por defecto su valor es **false**
 
-![Diagram](./assets/EgressGateway.svg) 
+![Diagram](./../assets/EgressGateway.svg) 
 
 
 ```
@@ -81,7 +81,7 @@ has_nat_gateway = false
 
 Todas esta variables deben de setearse en false, por defecto **has_private_subnet** esta definida como **true**, las demas por defecto en **false**
 
-![Diagram](./assets/Public.svg) 
+![Diagram](./../assets/Public.svg) 
 ```
 has_private_subnet = false
 has_egress_only_internet_gateway = false
