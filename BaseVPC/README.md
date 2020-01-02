@@ -29,7 +29,7 @@ tags= {
   default = {
     Created = "terraform"
   }
-// Si se desea que la ip por defecto sea publico en las redes publicas, por defecto "true" 
+// Si se desea que la ip por defecto sea publico en las redes publicas, por defecto "false" 
 public_subnet_map_public_ip_on_launch
 ```  
 
@@ -66,12 +66,13 @@ has_nat_gateway = false
 ```
 ## Egress-Only Internet Gateways
 
-Las variable **has_egress_only_internet_gateway** tiene que setearse en **true** las variables **has_nat_instance** y  **has_nat_gateway** por defecto su valor es **false**
+Las variable **has_egress_only_internet_gateway** y **assign_generated_ipv6 ** tienen que setearse en **true** las variables **has_nat_instance** y  **has_nat_gateway** por defecto su valor es **false**
 
 ![Diagram](./../assets/EgressGateway.svg) 
 
 
 ```
+assign_generated_ipv6 = true
 has_egress_only_internet_gateway = false
 has_nat_instance = true
 has_nat_gateway = false
