@@ -1,10 +1,10 @@
 # General
-name =  "terraform"
+name =  "eks"
 region = "us-east-1"
 //has_private_subnet = false
 // has_egress_only_internet_gateway = true
- has_nat_instance = true
-// has_nat_gateway = true
+// has_nat_instance = true
+ has_nat_gateway = true
 
 // VPC
 cidr_block = "172.16.0.0/16"

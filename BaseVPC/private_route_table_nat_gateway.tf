@@ -30,6 +30,10 @@ resource "aws_nat_gateway" "nat_gateway_public_b" {
 // Route Tables
 resource "aws_route_table" "nat_gateway_private_table_a" {
   vpc_id = "${aws_vpc.main.id}"
+  route {
+        cidr_block = "0.0.0.0/0"
+        nat_gateway_id = "${aws_nat_gateway.nat_gateway_public_a[0].id}"
+    }
   tags = merge ({
     Name = "${var.name}_private_table_a"
     type = "private"
@@ -39,6 +43,10 @@ resource "aws_route_table" "nat_gateway_private_table_a" {
 
 resource "aws_route_table" "nat_gateway_private_table_b" {
   vpc_id = "${aws_vpc.main.id}"
+  route {
+        cidr_block = "0.0.0.0/0"
+        nat_gateway_id = "${aws_nat_gateway.nat_gateway_public_b[0].id}"
+    }
   tags = merge ({
     Name = "${var.name}_private_table_b"
     type = "private"
