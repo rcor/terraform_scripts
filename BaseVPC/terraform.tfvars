@@ -14,3 +14,6 @@ assign_generated_ipv6= true
 cidr_subnets  = ["172.16.0.0/18", "172.16.64.0/18", "172.16.128.0/18", "172.16.192.0/18"]
 region_az = ["us-east-1a","us-east-1b","us-east-1c","us-east-1d"]
 public_subnet_map_public_ip_on_launch = true
+
+enable_dns_support = true
+enable_dns_hostnames = true
