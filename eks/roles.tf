@@ -58,3 +58,23 @@ resource "aws_iam_role_policy_attachment" "node_group_AmazonEC2ContainerRegistry
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
   role       = aws_iam_role.node_group.name
 }
+
+
+###
+
+resource "aws_iam_policy" "ALBIngressControllerIAMPolicy" {
+  name = "${var.name}-ALBIngressControllerIAMPolicy"
+  path        = "/"
+  description = "ALBIngressControllerIAMPolicy"
+  policy = file("files/ALBIngressControllerIAMPolicy.json")
+}
+
+resource "aws_iam_role" "eks_alb_ingress_controller" {
+  name = "${var.name}_eks_alb_ingress_controller"
+  assume_role_policy =  "${data.aws_iam_policy_document.assume_role_policy.json}"
+}
+
+resource "aws_iam_role_policy_attachment" "ingress-attach" {
+  role       = "${aws_iam_role.eks_alb_ingress_controller.name}"
+  policy_arn = "${aws_iam_policy.ALBIngressControllerIAMPolicy.arn}"
+}

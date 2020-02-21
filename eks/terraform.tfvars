@@ -1,10 +1,10 @@
 name =  "lab"
 region = "us-east-1"
-vpc_id = "vpc-030d634a2e03de779"
+vpc_id = "vpc-0f1befcc07843be83"
 cluster_name = "lab"
 
 
-private_subnet = ["subnet-0397d5389e2023e29","subnet-07ebf84ecb5c66cf6"]
+private_subnet = ["subnet-0ef29bb983a951c33","subnet-0cfd829f3057cf722"]
 has_endpoint_private_access=true
 
 node_group_name = "lab1"
