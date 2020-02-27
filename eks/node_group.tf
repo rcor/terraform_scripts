@@ -13,7 +13,7 @@ resource "aws_eks_node_group" "node_group" {
   disk_size = var.node_group[count.index].disk_size
   tags=var.node_group[count.index]["tags"]
   labels=var.node_group[count.index]["labels"]
-  instance_types=var.node_group[count.index]["instances_types"]
+  # instance_types=var.node_group[count.index]["instances_types"][0]
 
   # Ensure that IAM Role permissions are created before and deleted after EKS Node Group handling.
   # Otherwise, EKS will not be able to properly delete EC2 Instances and Elastic Network Interfaces.

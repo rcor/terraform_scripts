@@ -11,13 +11,32 @@ node_group = [
     node_group_name = "node_group01",
     instance_types = ["t2.medium"],
     tags = {
-      "Created" = "terraform"
-      "Name" = "node_group01"
+      "Created" = "terraform",
+      "Name" = "node_group01",
       "env" = "prod"
     },
     labels = {
-      "app" = "app01"
+      "app" = "app01",
+      "env" = "prod",
+    },
+    disk_size = 30,
+    scaling_config = {
+      desired_size = 1,
+      max_size = 2,
+      min_size = 1,
+    }
+  },
+  {
+    node_group_name = "node_group02",
+    instance_types = ["t2.micro"],
+    tags = {
+      "Created" = "terraform",
+      "Name" = "node_group02",
       "env" = "prod"
+    },
+    labels = {
+      "app" = "app02",
+      "env" = "dev",
     },
     disk_size = 30,
     scaling_config = {

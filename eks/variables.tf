@@ -34,7 +34,7 @@ variable "oidc_thumbprint_list" {
 variable node_group{
    type = list(object({
       node_group_name = string
-      instance_types = string
+      instance_types = list(string)
       tags = map(any)
       labels = map(any)
       disk_size = number
@@ -47,7 +47,7 @@ variable node_group{
    description = " Node groups for EKS"
    default=[{
        node_group_name = "group_name",
-       instance_types = "t2.medium",
+       instance_types = ["t2.medium"],
        tags = {},
        labels = {},
        disk_size = 20,
