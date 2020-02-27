@@ -25,11 +25,36 @@ variable instance_type {
   default = "t2.medium"
 }
 
-variable scaling_config {
-  default = {
-    desired_size = 1
-    max_size     = 1
-    min_size     = 1
-  }
+
+variable "oidc_thumbprint_list" {
+  type    = list
+  default = []
 }
-variable node_group_name {}
+
+variable node_group{
+   type = list(object({
+      node_group_name = string
+      instance_types = string
+      tags = map(any)
+      labels = map(any)
+      disk_size = number
+      scaling_config = object({
+      	desired_size = number
+      	max_size = number
+      	min_size = number
+      })
+  }))
+   description = " Node groups for EKS"
+   default=[{
+       node_group_name = "group_name",
+       instance_types = "t2.medium",
+       tags = {},
+       labels = {},
+       disk_size = 20,
+       scaling_config = {
+         desired_size=1,
+         max_size=1,
+         min_size=1,
+       }
+     }]
+}
