@@ -139,3 +139,9 @@ alb-ingress-controller-55b5bbcb5b-bc8q9   1/1     Running   0          56s
 ```
 kubectl logs -n kube-system   deployment.apps/alb-ingress-controller
 ```
+
+¿Cómo puedo autenticarme?
+```
+aws sts get-caller-identity
+aws eks update-kubeconfig --name ${NOMBRE DEL CLUSTER}
+```
