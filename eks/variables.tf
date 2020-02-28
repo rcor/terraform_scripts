@@ -1,5 +1,5 @@
 // general
-variable name {}
+variable name{}
 variable cluster_name {}
 variable region {}
 
@@ -21,9 +21,7 @@ variable tags {
 //vpc and subnet
 variable vpc_id {}
 variable private_subnet {}
-variable instance_type {
-  default = "t2.medium"
-}
+
 
 
 variable "oidc_thumbprint_list" {
