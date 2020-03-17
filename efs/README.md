@@ -13,11 +13,12 @@ variable name {}
 variable vpc_id {}
 # all the host with the follow SG can get access to EFS
 variable sg_env {}
-# List of subnet avalaible 
+# List of subnet avalaible
 variable subnet {}
 ```
 
 # Variables opcionales
+Estas variables son opcionales
 ```
 variable tags {
   default = {
@@ -33,5 +34,11 @@ variable encrypted {
 variable performance_mode {
   type = string
   default = "generalPurpose" // posible values "generalPurpose" or "maxIO"
+}
+
+variable tags  {
+    default = {
+      "Type" = "efs"
+    }
 }
 ```
