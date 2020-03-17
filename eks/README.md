@@ -97,15 +97,13 @@ La vpc seleccionada debera tener habilitada enableDnsHostnames y enableDnsSuppor
 
 
 # Setup
-Despues crear el archivo terraforms.tfvars con la configuracion deseada. Se debe agregar este tag a la VPC: **kubernetes.io/cluster/$(nombre del cluster)=shared**
 
-Para las subredes publicas o donde se genera el public ELB se debe agregar el tag: **kubernetes.io/role/elb=1**
-Para las subredes privadas o donde van estar los ELB internos se debe agregar el siguiente tag **kubernetes.io/role/internal-elb=1**
+Se debe ejecutar esto la primera vez, los nombres de variables las toma del archivo  ***terraform.tfvars*** 
 
 ```
 terraform init
 terraform apply -auto-approve
-./setup_cluster.sh $(nombre  del cluster)
+./setup_cluster.sh
 ```
 ejecutar el comando
 ```
@@ -145,3 +143,7 @@ kubectl logs -n kube-system   deployment.apps/alb-ingress-controller
 aws sts get-caller-identity
 aws eks update-kubeconfig --name ${NOMBRE DEL CLUSTER}
 ```
+¿En cuales redes se genera la ELB internas y externas ?
+Para las subredes publicas o donde se genera el public ELB se debe agregar el tag: **kubernetes.io/role/elb=1**
+Para las subredes privadas o donde van estar los ELB internos se debe agregar el siguiente tag **kubernetes.io/role/internal-elb=1**
+Esto se genera automaticamente con el script setup_cluster.sh

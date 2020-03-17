@@ -21,7 +21,7 @@ variable tags {
 //vpc and subnet
 variable vpc_id {}
 variable private_subnet {}
-
+variable public_subnet {}
 
 
 variable "oidc_thumbprint_list" {
