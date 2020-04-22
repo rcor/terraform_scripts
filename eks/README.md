@@ -95,10 +95,12 @@ variable has_endpoint_private_access {
 # Consideraciones
 La vpc seleccionada debera tener habilitada enableDnsHostnames y enableDnsSupport, para mas informacion en el siguiente [link](https://docs.aws.amazon.com/es_es/vpc/latest/userguide/vpc-dns.html)
 
+Todas las subredes deben de poder asignar IP publicas [link](https://aws.amazon.com/blogs/containers/upcoming-changes-to-ip-assignment-for-eks-managed-node-groups/)
+
 
 # Setup
 
-Se debe ejecutar esto la primera vez, los nombres de variables las toma del archivo  ***terraform.tfvars*** 
+Se debe ejecutar esto la primera vez, los nombres de variables las toma del archivo  ***terraform.tfvars***
 
 ```
 terraform init
@@ -139,7 +141,7 @@ kubectl logs -n kube-system   deployment.apps/alb-ingress-controller
 ```
 
 ¿Cómo puedo autenticarme?
-```
+```       
 aws sts get-caller-identity
 aws eks update-kubeconfig --name ${NOMBRE DEL CLUSTER}
 ```
