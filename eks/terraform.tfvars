@@ -4,8 +4,8 @@ vpc_id = "vpc-0ce08af34509c5ada"
 cluster_name = "lab"
 profile = "default"
 
-private_subnet = ["subnet-09ab22472d20d9e21","subnet-0d62baf95c9e42f0b"]
-public_subnet = ["subnet-008650b96ff91f6da","subnet-0cc734d94a83689d9"]
+private_subnet = ["subnet-0b4a0542b18376aa1","subnet-07ddaf1fb7a5d1b77"]
+public_subnet = ["subnet-0931cfe96bfc01b74","subnet-038494d82f7cb7703"]
 has_endpoint_private_access=true
 
 node_group = [

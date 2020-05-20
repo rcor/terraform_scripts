@@ -7,7 +7,7 @@ output "private_subnet" {
   description = "private subnet"
 }
 output "public_subnet" {
-  value       = var.private_subnet
+  value       = var.public_subnet
   description = "public subnet"
 }
 output "vpc" {
